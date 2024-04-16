@@ -1,0 +1,8 @@
+# Environment
+.env
+
+# Python stuff
+__pycache__
+
+# My test file
+src/test.py

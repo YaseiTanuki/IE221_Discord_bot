@@ -14,6 +14,7 @@ bot = commands.Bot(command_prefix="r! ", intents=intents)
 @bot.event
 async def on_ready():
     await bot.load_extension('cogs.ManageMessages')
+    await bot.load_extension('cogs.ManageMember')
     print("Bot is now ready")
 
 # Start bot (must be the last function to call)
