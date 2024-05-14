@@ -6,6 +6,11 @@ class Statistic(commands.Cog):
     Lớp Statistic chứa các hàm liên quan đến thống kê, ví dụ như thống kê số lượng tin nhắn.
     '''
     def __init__(self, bot):
+        '''
+        Hàm thiết lập của lớp
+        Input: self, Đối tượng bot
+        Ouput: None
+        '''
         self.bot = bot
     
     @commands.command()
@@ -21,16 +26,16 @@ class Statistic(commands.Cog):
         async for mess in ctx.channel.history(limit=100):
             if not mess.author.bot:
                 if len(table) == 0:
-                    table.append([mess.author, mess.author.name, 1])
+                    table.append([mess.author.name, mess.author.display_name, 1])
                     continue
 
                 for i in range(len(table)):
-                    if mess.author == table[i][0]:
+                    if mess.author.name == table[i][0]:
                         table[i][2] += 1
                         break
 
                     if i == len(table) - 1:
-                        table.append([mess.author, mess.author.name, 1])
+                        table.append([mess.author.name, mess.author.display_name, 1])
 
         table.sort(key=lambda x: x[2], reverse=True)
         

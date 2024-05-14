@@ -1,11 +1,16 @@
 import discord
-from dotenv import load_dotenv
 from discord.ext import commands
 
-load_dotenv()
-
-class ManageMember(commands.Cog):
+class MemberManager(commands.Cog):
+    '''
+    Lớp MemberManager chứa các phương thức liên quan đến quản lý thành viên.
+    '''
     def __init__(self, bot):
+        '''
+        Hàm thiết lập của lớp
+        Input: self, Đối tượng bot
+        Ouput: None
+        '''
         self.bot = bot
     
     # Commands for admin
@@ -13,7 +18,7 @@ class ManageMember(commands.Cog):
     @commands.has_permissions(kick_members = True)
     async def kick(seft, ctx, user: discord.Member):
         '''
-        Hàm kick() để mời một người dùng rời khỏi máy chủ.
+        Phương thức kick() để mời một người dùng rời khỏi máy chủ.
         Input: Bối cảnh thực hiện câu lệnh (ctx), người dùng cần xóa.
         Output: None
         '''
@@ -74,4 +79,9 @@ class ManageMember(commands.Cog):
 
 # For making extension
 async def setup(bot):
-    await bot.add_cog(ManageMember(bot))
+    '''
+    Hàm setup() dùng để thêm nhóm lệnh MemberManager
+    Input: Đối tượng bot
+    Output: None
+    '''
+    await bot.add_cog(MemberManager(bot))

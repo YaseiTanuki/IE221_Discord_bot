@@ -6,11 +6,16 @@ from discord.utils import get
 
 music = DiscordUtils.Music()
 
-class Play(commands.Cog):
+class Media(commands.Cog):
     '''
-    Lớp Play chứa các hàm liên quan đến phát media, ví dụ như video youtube.
+    Lớp Media chứa các hàm liên quan đến phát media, ví dụ như video youtube.
     '''
     def __init__(self, bot):
+        '''
+        Hàm thiết lập của lớp
+        Input: self, Đối tượng bot
+        Ouput: None
+        '''
         self.bot = bot
 
     @commands.command()
@@ -39,4 +44,4 @@ async def setup(bot):
     Input: Đối tượng bot
     Output: None
     '''
-    await bot.add_cog(Play(bot))
+    await bot.add_cog(Media(bot))

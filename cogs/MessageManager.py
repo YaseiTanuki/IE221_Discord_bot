@@ -1,23 +1,16 @@
-import os
-from dotenv import load_dotenv
 from discord.ext import commands
 
-load_dotenv()
-
-class ManageMessages(commands.Cog):
+class MessageManager(commands.Cog):
+    '''
+    Lớp MessageManger chứa những phương thức liên quan đến quản lý tin nhắn.
+    '''
     def __init__(self, bot):
+        '''
+        Phương thức thiết lập của lớp
+        Input: self, Đối tượng bot
+        Ouput: None
+        '''
         self.bot = bot
-
-    # Commands
-    @commands.command()
-    async def test(self, ctx):
-        '''
-        Hàm test() kiểm tra xem bot có đang hoạt động hay không
-        Input: bối cảnh thực hiện câu lệnh (ctx)
-        Output: None
-        '''
-        await ctx.send(f"{ctx.message.author} used the test!")
-        await ctx.send("Bot is working")
 
     @commands.command() # Clear 'number' of message(s)
     async def clear(self, ctx, number: int = commands.parameter(default=5)):
@@ -32,8 +25,8 @@ class ManageMessages(commands.Cog):
 # For making extension
 async def setup(bot):
     '''
-    Hàm setup() dùng để thêm lệnh Quản lý tin nhắn
+    Hàm setup() dùng để thêm lệnh MessageManager
     Input: Đối tượng bot
     Output: None
     '''
-    await bot.add_cog(ManageMessages(bot))
+    await bot.add_cog(MessageManager(bot))
