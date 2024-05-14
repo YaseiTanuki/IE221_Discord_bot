@@ -11,7 +11,12 @@ class ManageMember(commands.Cog):
     # Commands for admin
     @commands.command()
     @commands.has_permissions(kick_members = True)
-    async def kick(seft, ctx, user: discord.Member): #kick member
+    async def kick(seft, ctx, user: discord.Member):
+        '''
+        Hàm kick() để mời một người dùng rời khỏi máy chủ.
+        Input: Bối cảnh thực hiện câu lệnh (ctx), người dùng cần xóa.
+        Output: None
+        '''
         if ctx.message.author.top_role > user.top_role:
             await user.kick()
             await ctx.send(f'{user.name} is gone!')
@@ -20,7 +25,12 @@ class ManageMember(commands.Cog):
 
     @commands.command()
     @commands.has_permissions(ban_members = True)
-    async def ban(self, ctx, user: discord.Member): #ban member
+    async def ban(self, ctx, user: discord.Member):
+        '''
+        Hàm ban() để chặn một người dùng khỏi server
+        Input: bối cảnh thực hiện câu lệnh (ctx), người dùng cần chặn
+        Output: None
+        '''
         if ctx.message.author.top_role > user.top_role:
             await user.ban()
             await ctx.send(f'{user.name} is gone and will nerver comeback!')
@@ -30,7 +40,12 @@ class ManageMember(commands.Cog):
 
     @commands.command()
     @commands.has_permissions(manage_roles = True)
-    async def set_role(seft, ctx, role: discord.Role, user:  discord.Member):
+    async def add(seft, ctx, role: discord.Role, user:  discord.Member):
+        '''
+        Hàm add() để thêm một role cho một người dùng
+        Input: Bối cảnh thực hiện câu lệnh (ctx), tên role, người dùng cần thêm role
+        Ouput: None
+        '''
         if discord.utils.get(ctx.guild.roles, name = role.name):
             if ctx.message.author.top_role > role:
                 await user.add_roles(role)
@@ -42,7 +57,12 @@ class ManageMember(commands.Cog):
 
     @commands.command()
     @commands.has_permissions(manage_roles = True)
-    async def remove_role(seft, ctx, role: discord.Role, user: discord.Member):
+    async def minus(seft, ctx, role: discord.Role, user: discord.Member):
+        '''
+        Hàm minus() để bỏ một role cho một người dùng
+        Input: Bối cảnh thực hiện câu lệnh (ctx), tên role, người dùng cần bỏ role
+        Ouput: None
+        '''
         if discord.utils.get(ctx.guild.roles, name = role.name):
             if ctx.message.author.top_role > user.top_role:
                 await user.remove_roles(role)

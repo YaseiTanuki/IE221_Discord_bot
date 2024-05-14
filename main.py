@@ -8,7 +8,7 @@ from discord.ext import commands
 load_dotenv()
 
 intents = discord.Intents.all()
-bot = commands.Bot(command_prefix="r! ", intents=intents)
+bot = commands.Bot(command_prefix="$ ", intents=intents)
 
 # Print when bot is ready
 @bot.event
@@ -17,6 +17,7 @@ async def on_ready():
     await bot.load_extension('cogs.ManageMember')
     await bot.load_extension('cogs.Statistic')
     await bot.load_extension('cogs.Play')
+    await bot.load_extension('cogs.Game')
     print("Bot is now ready")
 
 @bot.command()
