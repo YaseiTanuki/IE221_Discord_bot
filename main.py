@@ -19,6 +19,7 @@ async def on_ready():
     Output: None
     '''
     await bot.load_extension('cogs.General')
+    await bot.load_extension('cogs.ServerManager')
     await bot.load_extension('cogs.MessageManager')
     await bot.load_extension('cogs.MemberManager')
     await bot.load_extension('cogs.Statistic')
